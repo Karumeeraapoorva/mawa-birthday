@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Mawa ❤️</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Georgia,"Times New Roman",serif}
+body{
+  overflow-x:hidden;
+  color:#fff;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,105,160,.22), transparent 28%),
+    radial-gradient(circle at 80% 30%, rgba(255,180,210,.16), transparent 25%),
+    linear-gradient(135deg,#160812,#3a1026 48%,#12060d);
+}
+canvas{position:fixed;inset:0;pointer-events:none;z-index:0}
+.hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.heart{position:absolute;bottom:-40px;font-size:18px;opacity:.65;animation:float linear infinite}
+@keyframes float{from{transform:translateY(0) rotate(0deg);opacity:0}15%{opacity:.7}to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+.wrap{position:relative;z-index:2;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px 16px}
+.card{
+  width:min(760px,100%); min-height:620px; padding:44px 25px;
+  border:1px solid rgba(255,255,255,.2); border-radius:30px;
+  background:rgba(20,5,14,.58); backdrop-filter:blur(12px);
+  box-shadow:0 20px 70px rgba(0,0,0,.45);
+  text-align:center; display:flex; flex-direction:column; justify-content:center;
+}
+.badge{font-family:Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;font-size:12px;color:#ffd4e5}
+h1{font-size:clamp(44px,10vw,82px);margin:15px 0 8px;line-height:1}
+h1 span{display:block;font-size:clamp(28px,6vw,46px);margin-top:12px}
+.subtitle{font-size:20px;color:#ffdce9;margin:0 auto 28px;max-width:580px;line-height:1.6}
+button{
+  border:0;border-radius:999px;padding:15px 28px;font-size:16px;font-weight:bold;
+  color:#4a102a;background:#fff0f6;cursor:pointer;box-shadow:0 8px 30px rgba(255,150,190,.25);
+  transition:.25s transform,.25s box-shadow
+}
+button:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(255,150,190,.4)}
+.message{display:none;max-width:620px;margin:25px auto 0;text-align:left;animation:appear .8s ease}
+@keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+.message p{font-size:18px;line-height:1.9;color:#ffeaf2;margin:0 0 16px}
+.quote{text-align:center;font-size:22px!important;color:#fff!important;font-style:italic;margin:25px 0!important}
+.end{text-align:center;margin-top:25px}
+.signature{font-size:16px;color:#ffc5d9;margin-top:12px}
+.final-love{font-size:30px;font-weight:bold;margin-top:25px;color:#fff0f6;text-shadow:0 0 18px rgba(255,150,190,.65)}
+.kisses{font-size:32px;margin-top:10px;letter-spacing:8px}
+.sparkle{display:inline-block;animation:twinkle 1.8s infinite alternate}
+@keyframes twinkle{to{transform:scale(1.25);opacity:.55}}
+.small{font-family:Arial,sans-serif;font-size:12px;color:rgba(255,255,255,.55);margin-top:28px}
+@media(max-width:500px){.card{min-height:650px;padding:38px 20px}.message p{font-size:16px;line-height:1.8}}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="hearts" id="hearts"></div>
+
+<main class="wrap">
+<section class="card">
+  <div class="badge">A little surprise, just for you</div>
+  <h1>Happy Birthday <span>My Mawa ❤️</span></h1>
+  <p class="subtitle">Today is your day… so I wanted to leave a little piece of my heart here for you. ✨</p>
+  <button id="openBtn">Tap to Open Your Surprise 💌</button>
+  <button id="musicBtn" style="display:none;margin:12px auto 0;background:#ffd8e8;">Play Soft Music 🎶</button>
+
+  <div class="message" id="message">
+    <p>Dear Mawa ❤️,</p>
+    <p>
+      Nuvvu na life lo vachinappati nunchi, chala small moments kuda special ga anipisthunnayi.
+      Manam every time kalisi undakapoyina, somehow nuvvu naa thoughts lo always untav.
+    </p>
+    <p>
+      Nee smile, nee matalu, nee care… ivanni naaku chala precious.
+      Sometimes words lo cheppadam kastam, but I really want you to know how much you mean to me.
+    </p>
+    <p>
+      Ee birthday ki nenu nee pakkana undi celebrate cheyyalekapoyina,
+      naa wishes matram full heart tho neetho unnayi. 🫶
+      Nuvvu always happy ga, peaceful ga, and confident ga undali ani korukuntunna.
+    </p>
+    <p>
+      Life lo enni changes vachina, manam share chesina beautiful memories ni
+      always special ga remember cheskundham. ❤️
+    </p>
+    <p class="quote">
+      “Distance can keep us from celebrating together,<br>
+      but it can never make you less special to me.”
+    </p>
+    <div class="end">
+      <div style="font-size:28px">Happy Birthday, Mawa 🎂❤️</div>
+      <div class="signature">Keep smiling… always. <span class="sparkle">✨</span></div>
+      <div class="final-love">I Love You, Mawa ❤️</div>
+      <div class="kisses">💋 💋</div>
+    </div>
+  </div>
+  <div class="small">Made with love, only for Mawa ❤️</div>
+</section>
+</main>
+
+<script>
+const heartBox=document.getElementById('hearts');
+const symbols=['❤️','♡','💗','💕','✨'];
+for(let i=0;i<26;i++){
+  const h=document.createElement('div');
+  h.className='heart';
+  h.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  h.style.left=Math.random()*100+'%';
+  h.style.animationDuration=(7+Math.random()*8)+'s';
+  h.style.animationDelay=(-Math.random()*12)+'s';
+  h.style.fontSize=(12+Math.random()*18)+'px';
+  heartBox.appendChild(h);
+}
+const c=document.getElementById('stars'),ctx=c.getContext('2d');
+function resize(){c.width=innerWidth*devicePixelRatio;c.height=innerHeight*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
+resize();addEventListener('resize',resize);
+let dots=Array.from({length:80},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.5+.3,a:Math.random()}));
+function draw(){
+ ctx.clearRect(0,0,innerWidth,innerHeight);
+ dots.forEach(d=>{d.a+=.01;ctx.globalAlpha=.25+.25*Math.sin(d.a);ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill()});
+ requestAnimationFrame(draw);
+} draw();
+
+let audioCtx, gain, musicTimer;
+function startSoftMusic(){
+  if(audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  gain = audioCtx.createGain();
+  gain.gain.value = 0.035;
+  gain.connect(audioCtx.destination);
+  const notes = [261.63,329.63,392.00,329.63,293.66,349.23,440.00,349.23];
+  let i=0;
+  musicTimer=setInterval(()=>{
+    const osc=audioCtx.createOscillator();
+    const g=audioCtx.createGain();
+    osc.type='sine';
+    osc.frequency.value=notes[i++ % notes.length];
+    g.gain.setValueAtTime(0,audioCtx.currentTime);
+    g.gain.linearRampToValueAtTime(0.18,audioCtx.currentTime+0.04);
+    g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+1.2);
+    osc.connect(g); g.connect(gain);
+    osc.start(); osc.stop(audioCtx.currentTime+1.25);
+  },700);
+}
+document.getElementById('openBtn').onclick=function(){
+ document.getElementById('message').style.display='block';
+ this.style.display='none';
+ document.getElementById('musicBtn').style.display='block';
+ window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+};
+document.getElementById('musicBtn').onclick=function(){
+ startSoftMusic();
+ this.textContent='Soft Music Playing 🎶❤️';
+ this.disabled=true;
+};
+</script>
+</body>
+</html>
